@@ -2,8 +2,6 @@ This repo holds scripts used to generate lasercutter files that cut origami crea
 
 # Example of a structure these scripts can generate:
 
-<img src='https://github.com/NathanJustus/OrigamiLaserCutting/blob/main/ExampleStructures/ExtendedHexagonalTower.jpg' width='25'>
+<img src='https://github.com/NathanJustus/OrigamiLaserCutting/blob/main/ExampleStructures/ExtendedHexagonalTower.jpg' width='250'>
 
-![alt text](https://github.com/NathanJustus/OrigamiLaserCutting/blob/main/ExampleStructures/ExtendedHexagonalTower.jpg | width=100)
-
-![alt text](https://github.com/NathanJustus/OrigamiLaserCutting/blob/main/ExampleStructures/CollapsedHexagonalTower.jpg | width=100)
+<img src='https://github.com/NathanJustus/OrigamiLaserCutting/blob/main/ExampleStructures/CollapsedHexagonalTower.jpg' width='250'>
