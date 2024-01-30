@@ -32,7 +32,7 @@ mkdir('origamiFigures',['N',num2str(N),'M',num2str(M)]);
 %File preamble
 pbl = ['origamiFigures\',['N',num2str(N),'M',num2str(M)],'\'];
 %File ending
-fend = ['_N',num2str(N),'M',num2str(M),'.eps'];
+fend = ['_N',num2str(N),'M',num2str(M),'.svg'];
 %Boolean to close figures after generating and saving
 closeTheFigures = false;
 
@@ -99,7 +99,7 @@ axis off;
 
 axis([min(xs),max(xs),min(ys_v1),max(ys_v2)]);
 fig1.Position = [1,1,max(xs)-min(xs),max(ys_v2)-min(ys_v1)];
-exportgraphics(fig1,[pbl,'CylinderEtch',fend]);
+saveas(fig1,[pbl,'CylinderEtch',fend]);
 
 %% Generate the cut pattern outline for the main cylinder
 
@@ -128,7 +128,7 @@ axis off;
 
 axis([min(xs),max(xs),min(ys_v1),max(ys_v2)]);
 fig2.Position = [1,1,max(xs)-min(xs),max(ys_v2)-min(ys_v1)];
-exportgraphics(fig2,[pbl,'CylinderCut',fend]);
+saveas(fig2,[pbl,'CylinderCut',fend]);
 
 %% Generate the etch pattern for the nozzle
 
@@ -202,7 +202,7 @@ axis off;
 
 axis([lows(1),highs(1),lows(2),highs(2)]);
 fig3.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
-exportgraphics(fig3,[pbl,'NozzleEtch',fend]);
+saveas(fig3,[pbl,'NozzleEtch',fend]);
 
 %% Generate nozzle cut pattern outline
 
@@ -240,7 +240,7 @@ axis off;
 
 axis([lows(1),highs(1),lows(2),highs(2)]);
 fig4.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
-exportgraphics(fig4,[pbl,'NozzleCut',fend]);
+saveas(fig4,[pbl,'NozzleCut',fend]);
 
 %% Plot Checkvalve Cap Etch
 
@@ -291,7 +291,7 @@ axis off;
 
 axis([lows(1),highs(1),lows(2),highs(2)]);
 fig5.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
-exportgraphics(fig5,[pbl,'CheckValveEtch',fend]);
+saveas(fig5,[pbl,'CheckValveEtch',fend]);
 
 %% Plot Checkvalve Cap Cut
 
@@ -345,7 +345,7 @@ axis off;
 
 axis([lows(1),highs(1),lows(2),highs(2)]);
 fig6.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
-exportgraphics(fig6,[pbl,'CheckValveCut',fend]);
+saveas(fig6,[pbl,'CheckValveCut',fend]);
 
 %% Plot Valve
 
@@ -390,7 +390,7 @@ axis off;
 
 axis([lows(1),highs(1),lows(2),highs(2)]);
 fig7.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
-exportgraphics(fig7,[pbl,'ValveCut',fend]);
+saveas(fig7,[pbl,'ValveCut',fend]);
 
 if closeTheFigures
     close all
