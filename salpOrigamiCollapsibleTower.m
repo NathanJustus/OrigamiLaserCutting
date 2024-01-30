@@ -56,12 +56,6 @@ fig1 = figure(1);
 clf;
 hold on;
 set(fig1,'Units','inches');
-xticks();
-yticks();
-xticklabels();
-yticklabels();
-axis equal;
-axis off;
 
 %Plot all the rows
 for i = 0:L:N*L
@@ -95,7 +89,17 @@ for i = 1:numel(xs_stripe)
     plot(these_xs,ys_v1,'k','LineWidth',lw);
 end
 
-saveas(fig1,[pbl,'CylinderEtch',fend]);
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([min(xs),max(xs),min(ys_v1),max(ys_v2)]);
+fig1.Position = [1,1,max(xs)-min(xs),max(ys_v2)-min(ys_v1)];
+exportgraphics(fig1,[pbl,'CylinderEtch',fend]);
 
 %% Generate the cut pattern outline for the main cylinder
 
@@ -104,12 +108,6 @@ fig2 = figure(2);
 clf;
 hold on;
 set(fig2,'Units','inches');
-xticks();
-yticks();
-xticklabels();
-yticklabels();
-axis equal;
-axis off;
 
 %Bottom edge
 plot(xs,ys_h,'r','LineWidth',lw);
@@ -120,7 +118,17 @@ plot(xs(1)*ones(size(ys_v1)),ys_v1,'r','LineWidth',lw);
 %Right edge
 plot(xs(end)*ones(size(ys_v1)),ys_v1,'r','LineWidth',lw);
 
-saveas(fig2,[pbl,'CylinderCut',fend]);
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([min(xs),max(xs),min(ys_v1),max(ys_v2)]);
+fig2.Position = [1,1,max(xs)-min(xs),max(ys_v2)-min(ys_v1)];
+exportgraphics(fig2,[pbl,'CylinderCut',fend]);
 
 %% Generate the etch pattern for the nozzle
 
@@ -129,12 +137,6 @@ fig3 = figure(3);
 clf;
 hold on;
 set(fig3,'Units','inches');
-xticks();
-yticks();
-xticklabels();
-yticklabels();
-axis equal;
-axis off;
 
 %Radius of polygon inscribed circle
 R = L/(2*tan(pi/N));
@@ -187,7 +189,20 @@ for i = 1:2:N
     plot(flap(1,i:(i+1)),flap(2,i:(i+1)),'k','LineWidth',lw);
 end
 
-saveas(fig3,[pbl,'NozzleEtch',fend]);
+lows = min([inner,outer,flap]')';
+highs = max([inner,outer,flap]')';
+
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([lows(1),highs(1),lows(2),highs(2)]);
+fig3.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
+exportgraphics(fig3,[pbl,'NozzleEtch',fend]);
 
 %% Generate nozzle cut pattern outline
 
@@ -196,12 +211,6 @@ fig4 = figure(4);
 clf;
 hold on;
 set(fig4,'Units','inches');
-xticks();
-yticks();
-xticklabels();
-yticklabels();
-axis equal;
-axis off;
 
 nFlapUnits = floor(N/2);
 
@@ -221,7 +230,17 @@ edgePoints = [edgePoints,inner(:,end)];
 
 plot(edgePoints(1,:),edgePoints(2,:),'r','LineWidth',lw);
 
-saveas(fig4,[pbl,'NozzleCut',fend]);
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([lows(1),highs(1),lows(2),highs(2)]);
+fig4.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
+exportgraphics(fig4,[pbl,'NozzleCut',fend]);
 
 %% Plot Checkvalve Cap Etch
 
@@ -229,12 +248,6 @@ fig5 = figure(5);
 clf;
 hold on;
 set(fig5,'Units','inches');
-xticks();
-yticks();
-xticklabels();
-yticklabels();
-axis equal;
-axis off;
 
 H1 = L/(2*sin(pi/N));
 H2 = H1 + L/3;
@@ -265,7 +278,20 @@ thetas_circle = linspace(0,2*pi,101);
 plot(edgePoints(1,:),edgePoints(2,:),'k','LineWidth',lw);
 plot(R*cos(thetas_circle),R*sin(thetas_circle),'k','LineWidth',lw);
 
-saveas(fig5,[pbl,'CheckValveEtch',fend]);
+lows = min(edgePoints')';
+highs = max(edgePoints')';
+
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([lows(1),highs(1),lows(2),highs(2)]);
+fig5.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
+exportgraphics(fig5,[pbl,'CheckValveEtch',fend]);
 
 %% Plot Checkvalve Cap Cut
 
@@ -309,7 +335,17 @@ thetas_circle = linspace(0,2*pi,101);
 plot(edgePoints(1,N+1:end),edgePoints(2,N+1:end),'r','LineWidth',lw);
 plot(R*cos(thetas_circle),R*sin(thetas_circle),'r','LineWidth',lw);
 
-saveas(fig6,[pbl,'CheckValveCut',fend]);
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([lows(1),highs(1),lows(2),highs(2)]);
+fig6.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
+exportgraphics(fig6,[pbl,'CheckValveCut',fend]);
 
 %% Plot Valve
 
@@ -341,7 +377,20 @@ end
 
 plot(edgePoints(1,:),edgePoints(2,:),'r','LineWidth',lw);
 
-saveas(fig7,[pbl,'ValveCut',fend]);
+lows = min(edgePoints')';
+highs = max(edgePoints')';
+
+set(gca,'xtick',[])
+set(gca,'xticklabel',[])
+set(gca,'ytick',[])
+set(gca,'yticklabel',[])
+set(gca,'visible','off');
+axis equal;
+axis off;
+
+axis([lows(1),highs(1),lows(2),highs(2)]);
+fig7.Position = [1,1,highs(1)-lows(1),highs(2)-lows(2)];
+exportgraphics(fig7,[pbl,'ValveCut',fend]);
 
 if closeTheFigures
     close all
