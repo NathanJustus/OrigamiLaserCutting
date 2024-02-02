@@ -9,9 +9,9 @@ clear all
 %Polygon side length
 L = 1;
 %Polygon number of sides
-N = 8;
+N = 4;
 %Number of collapse sections
-M = 4;
+M = 3;
 %Nozzle Angle (larger angle looks like a cylinder, smaller like a plane)
 nozzleTheta = pi/4;
 %Exit area ratio (ratio of nozzle area to cylinder area)
