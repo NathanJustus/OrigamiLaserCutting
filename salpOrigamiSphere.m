@@ -84,14 +84,14 @@ axis([0,C*L,0,R*L]);
 fig1.Position = [1,1,C*L,R*L];
 saveas(fig1,[pbl,'SphereEtch',fend]);
 
-%% Generate the cut pattern outline for the main cylinder
-
+%% Generate the cut pattern outline for the sphere
 %Can do a separate figure or just plot a different color on the same plot
 fig2 = figure(2);
 clf;
 hold on;
 set(fig2,'Units','inches');
 
+%Draw the perimeter box
 xs = [0,C*L,C*L,0,0];
 ys = [0,0,R*L,R*L,0];
 plot(xs,ys,'r','LineWidth',lw);
